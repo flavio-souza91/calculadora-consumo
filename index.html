@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Consumo de Combustivel</title>
-</head>
-<body>
-    <p>Digite o consumo do veiculo (KM/L):</p>
-    <p>Digite a velocidade média (KM/h):</p>
-    <p>Selecione o tempo total da viagem:</p>
-</body>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+    <title>Calculadora Consumo</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="">Tipo de Combustível</label>
+      <section>
+        <div><input type="radio" name="combustivel" class="inputCombustivel" id="etanol" value="etanol" /> <label for="etanol">Etanol</label></div>
+        <div>
+          <input type="radio" name="combustivel" class="inputCombustivel" id="gasolina" value="gasolina" /> <label for="gasolina">Gasolina</label>
+        </div>
+      </section>
+      <label for="consumo">Digite o consumo do veículo (Km/L):</label>
+      <input type="number" id="consumo" />
+      <label for="velocidade">Digite a velocidade média (Km/h):</label>
+      <input type="number" id="velocidade" />
+      <label for="duracao">Selecione o tempo total da viagem:</label>
+      <input type="time" id="duracao" />
+      <button>CALCULAR</button>
+    </form>
+    <p>Lorem, ipsum dolor sit amet .</p>
+  </body>
 </html>
