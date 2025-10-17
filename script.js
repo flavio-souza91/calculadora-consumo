@@ -41,16 +41,47 @@ elemento.formulario.addEventListener("submit", (evento) => {
 });
 
 function calcularConsumo() {
+  //VARIAVEIS PARA CAPTURAR O VALOR DA HORA E MINUTO
   viagem.duracao = input.duracao.value;
   viagem.velocidadeMedia = input.velocidade.value;
 
-  let hora = (viagem.duracao).slice(0,2);
-  let minuto = (viagem.duracao).slice(3);
+  //CAPTURA O VALOR DO CONSUMO MÉDIO DIFITADO PELO USUÁRIO
+  veiculo.consumoMedio = input.consumo.value;
+  console.log(veiculo.consumoMedio);
 
-  console.log(hora);
-  console.log(minuto);
+  // MÉTODO (SLICE) PARA CORTAR O SIMBOLO ":" DA HORA E MINUTO, SEPARANDO EM VARIAVEIS PRÓPRIAS
+  let hora = +viagem.duracao.slice(0, 2); //usar o + para transformar string em numero
+  let minuto = Number(viagem.duracao.slice(3)); // usar number () para transformar string em numero
+
+  // FORMULA PARA CALCULAR A DISTÂNCIA PERCORRIDA PELO USUÁRIO
+  viagem.percurso = (viagem.velocidadeMedia * ((hora * 60 + minuto) / 60)).toFixed(1)
+
+  //MÉTODO (REPLACE) PARA SUBSTITUIR ". POR "," NA EXIBIÇÃO DA DISTÂNCIA TOTAL
+  console.log(viagem.percurso.replace(".", ",") + " KM");
+
+  //CALCULO DO CONSUMO EM LITROS GASTOS NA VIAGEM
+  viagem.consumoLitros = viagem.percurso / veiculo.consumoMedio;
+  console.log(viagem.consumoLitros);
+
+  // CALCULO PARA SABER O CUSTO EM REAIS (R$) DE ACORDO COM CONSUMO EM LITROS
+
+  if (combustivel.tipo.toLowerCase() === "etanol") {
+    viagem.custoEmReais = viagem.consumoLitros * combustivel.precoEtanol;
+    
+    //MÉTODO PARA FORMATAR O RESULTADO COMO MOEDA (R$)
+    console.log(`Custo do Etanol: ${viagem.custoEmReais.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })}`
+    );
+  } else {
+    viagem.custoEmReais = viagem.consumoLitros * combustivel.precoGasolina;
+    
+    //MÉTODO PARA FORMATAR O RESULTADO COMO MOEDA (R$)
+    console.log(`Custo da Gasolina: ${viagem.custoEmReais.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })}`
+    );
+  }
 }
-
-viagem.percurso = viagem.duracao * viagem.velocidadeMedia;
-
-viagem.consumoLitros = Math.round(viagem.percurso / veiculo.consumoMedio);
