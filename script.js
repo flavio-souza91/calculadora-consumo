@@ -45,7 +45,7 @@ function calcularConsumo() {
   viagem.duracao = input.duracao.value;
   viagem.velocidadeMedia = input.velocidade.value;
 
-  //CAPTURA O VALOR DO CONSUMO MÉDIO DIFITADO PELO USUÁRIO
+  //CAPTURA O VALOR DO CONSUMO MÉDIO DIGITADO PELO USUÁRIO
   veiculo.consumoMedio = input.consumo.value;
   console.log(veiculo.consumoMedio);
 
@@ -84,4 +84,7 @@ function calcularConsumo() {
       })}`
     );
   }
+  elemento.paragrafo.innerText = (`A distância total da viagem é de: ${viagem.percurso.replace(".", ",") + " KM"} 
+  e o consumo total foi de: ${viagem.consumoLitros.toFixed(1).replace(".", ",")} Litros, 
+  e o valor total da viagem foi de: ${viagem.custoEmReais.toLocaleString("pt-BR", {style: "currency",currency: "BRL",})}.`)
 }
