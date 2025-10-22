@@ -22,13 +22,14 @@
     font-family:cursive;
     background-color: #cdfa84;
 }
-#consumo, #velocidade, #duracao{
+#consumo, #velocidade, #duracao, #precoCombustivel{
     border-radius: 20px;
     font-family: cursive;
 }
   section {
       display: flex;
       justify-content: space-between;
+      flex-direction: column;
   }
 
   label:hover {
